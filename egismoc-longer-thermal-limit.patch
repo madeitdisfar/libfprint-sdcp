@@ -1,0 +1,19 @@
+diff --git a/libfprint/drivers/egismoc/egismoc.c b/libfprint/drivers/egismoc/egismoc.c
+index 736730da..85d5f686 100644
+--- a/libfprint/drivers/egismoc/egismoc.c
++++ b/libfprint/drivers/egismoc/egismoc.c
+@@ -1896,7 +1896,13 @@ fpi_device_egismoc_class_init (FpiDeviceEgisMocClass *klass)
+   dev_class->id_table = egismoc_id_table;
+   dev_class->nr_enroll_stages = EGISMOC_MAX_ENROLL_STAGES_DEFAULT;
+   /* device should be "always off" unless being used */
+-  dev_class->temp_hot_seconds = 0;
++  /* Local change: a lock screen that keeps listening for a finger reached
++   * libfprint's default limit (3 min) and refused scans until the reader
++   * cooled down. The reader does warm slightly when listening for long, so
++   * keep the guard but allow 10 min of continuous use; it's usable again
++   * after about 6 min of rest. */
++  dev_class->temp_hot_seconds = 10 * 60;
++  dev_class->temp_cold_seconds = 15 * 60;
+ 
+   sdcp_dev_class->open = egismoc_open;
+   sdcp_dev_class->connect = egismoc_connect;

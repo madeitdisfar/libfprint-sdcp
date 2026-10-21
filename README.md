@@ -14,6 +14,11 @@ This builds libfprint from the branch of upstream merge request [!547](https://g
 - `check()` skips the `metainfo-validate` test, which fetches a GitLab URL that now returns 404 to anonymous clients.
 - The package `provides` and `conflicts` with `libfprint`, so normal updates don't replace it. fprintd 1.94.5 works with it unchanged.
 
+Two small local patches are applied on top:
+
+- `fix-too-hot-error-message.patch`: in the MR branch, the new "untrusted" error case took over the `break` of the "too hot" case, so overheating errors said "Could not verify integrity of the device, it cannot be trusted!". This restores the `break`.
+- `egismoc-longer-thermal-limit.patch`: libfprint has an overheating guard that counts how long a reader has been busy, and waiting for a finger counts as busy. With the default limit (about 3 minutes), a lock screen that keeps listening has its scans refused until the reader has rested. This raises the limit for the `egismoc` driver to 10 minutes of continuous use, with a cooling setting of 15 minutes instead of 9, so after hitting the limit the reader is usable again after about 6 minutes of rest. The guard still applies, just later: in a test, the sensor got slightly warm after 15 minutes of continuous listening.
+
 ## Build and install
 
 ```

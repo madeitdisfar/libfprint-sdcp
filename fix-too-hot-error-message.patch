@@ -1,0 +1,12 @@
+diff --git a/libfprint/fpi-device.c b/libfprint/fpi-device.c
+index 191d9ab8..7d0a894f 100644
+--- a/libfprint/fpi-device.c
++++ b/libfprint/fpi-device.c
+@@ -190,6 +190,7 @@ fpi_device_error_new (FpDeviceError error)
+ 
+     case FP_DEVICE_ERROR_TOO_HOT:
+       msg = "Device disabled to prevent overheating.";
++      break;
+ 
+     case FP_DEVICE_ERROR_UNTRUSTED:
+       msg = "Could not verify integrity of the device, it cannot be trusted!";

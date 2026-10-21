@@ -1,3 +1,8 @@
+# Maintainer: Minjun Kim <mjkim5216@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Tom Gundersen <teg@jklm.no>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
+
 # Local build of libfprint with SDCP v2 support for Egis match-on-chip
 # readers (Galaxy Book4 Pro: 1c7a:05a1), from upstream MR !547:
 # https://gitlab.freedesktop.org/libfprint/libfprint/-/merge_requests/547

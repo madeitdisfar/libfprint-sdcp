@@ -31,3 +31,13 @@ Once a libfprint release includes SDCP support:
 ```
 sudo pacman -S libfprint
 ```
+
+## Credits
+
+- The SDCP support is the work of Joshua Grisham and Benjamin Berg in [libfprint MR !547](https://gitlab.freedesktop.org/libfprint/libfprint/-/merge_requests/547). This repo only builds it.
+- [libfprint](https://gitlab.freedesktop.org/libfprint/libfprint) by the libfprint developers.
+- The PKGBUILD is based on [Arch Linux's libfprint packaging](https://gitlab.archlinux.org/archlinux/packaging/packages/libfprint) by Jan Alexander Steffens and earlier contributors.
+
+## License
+
+MIT (see `LICENSE`). libfprint itself, which the PKGBUILD downloads at build time, is LGPL-2.1-or-later.

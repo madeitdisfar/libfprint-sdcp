@@ -21,7 +21,7 @@
 pkgname=libfprint-sdcp
 _commit=2d7c5277de08c6b29b3fac7447f17a516fbc4d1c # feature/sdcp-v2, 2026-04-07
 pkgver=1.94.10.r27.g2d7c527
-pkgrel=2
+pkgrel=4
 pkgdesc="Library for fingerprint readers (with SDCP support from MR !547)"
 url="https://fprint.freedesktop.org/"
 arch=(x86_64)
@@ -54,15 +54,18 @@ source=(
   "libfprint::git+https://gitlab.freedesktop.org/libfprint/libfprint.git#commit=$_commit"
   fix-too-hot-error-message.patch
   egismoc-longer-thermal-limit.patch
+  sdcp-host-key-fixes.patch
 )
 b2sums=('SKIP'
         'ae909cbd8db2181ff35ae0b331efb9171a73345ed362d138fc8de08de362122d6c1ecc4213fe8f0dd28a294d73e01748f08646a46ef4a109eff72c15b23bfe03'
-        'b60795a43ebf1c79f47ccd424587edfbd16c9a27684edcfd04a6e91012a4f8eadaa1fd9c8772dbe3878cda24904bd668f46ebe5175320cf56d368f8d0f01b076')
+        'b60795a43ebf1c79f47ccd424587edfbd16c9a27684edcfd04a6e91012a4f8eadaa1fd9c8772dbe3878cda24904bd668f46ebe5175320cf56d368f8d0f01b076'
+        'b99db08462988a533430f9b0619fc126da8c3cf95a0fba4870be51b35464db07abf99cd744b9f00f66d1f91147bd223d6ccef3ab5fe4e545928ac550530666c2')
 
 prepare() {
   cd libfprint
   patch -Np1 -i ../fix-too-hot-error-message.patch
   patch -Np1 -i ../egismoc-longer-thermal-limit.patch
+  patch -Np1 -i ../sdcp-host-key-fixes.patch
 }
 
 build() {
